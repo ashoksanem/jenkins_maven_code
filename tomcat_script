@@ -1,0 +1,23 @@
+cd $TOMCAT_HOME/bin
+./shutdown.sh
+sleep 20
+cd $TOMCAT_HOME/webapps
+mv  $APPNAME.war /tmp/$APPNAME.war_bkp
+rm -rf webapp
+cd /tmp/
+wget http://35.226.194.30:8081/nexus/content/repositories/releases/com/rns/app/$APPNAME/$VERSION/$APPNAME-$VERSION.war
+cp -rf  $APPNAME-$VERSION.war  $TOMCAT_HOME/webapps/$APPNAME.war
+cd $TOMCAT_HOME/temp
+rm -rf *
+cd $TOMCAT_HOME/work
+rm -rf *
+cd $TOMCAT_HOME/bin
+./startup.sh
+sleep 20
+curl  http://35.226.194.30:8081/nexus/content/repositories/releases/com/rns/app/$APPNAME/$VERSION/$APPNAME-$VERSION.war
+if [ $? -eq 0 ]
+	then
+		echo "Application hosted successfully"
+	else
+		echo "Application hosted failed"
+	fi
