@@ -19,17 +19,17 @@
     <finalName>webapp</finalName>
   </build>
   
-   <distributionManagement>
-  <repository>
-     <id>deployment</id>
-     <name>Internal Releases</name>
-     <url>http://35.226.194.30:8081/nexus/content/repositories/releases/</url>
-  </repository>
-  <snapshotRepository>
-     <id>deployment</id>
-     <name>snapshot </name>
-     <url>http://35.226.194.30:8081/nexus/content/repositories/snapshots/</url>
-  </snapshotRepository>
+  <distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>jfrog-artifactory-releases</name>
+        <url>http://35.232.89.42:8081/artifactory/maven-release</url>
+    </repository>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>jfrog-artifactory-snapshots</name>
+        <url>http://35.232.89.42:8081/artifactory/maven-snapshot</url>
+    </snapshotRepository>
 </distributionManagement>
 
 </project>
